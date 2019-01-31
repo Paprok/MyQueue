@@ -34,6 +34,19 @@ public class Queue {
         return this.last.getContent();
     }
 
+    public String dequeue(){
+        Node node;
+        if(this.first==null){
+            throw new QueueUnderflow();
+        } else if (this.first == this.last){
+            node = this.first;
+            this.first = this.last = null;
+        } else {
+            node = this.first;
+            this.first = this.first.getNext();
+        }
+        return node.getContent();
+    }
 
     public String toString() {
         StringBuilder builder = new StringBuilder();
